@@ -30,7 +30,7 @@ export class Article extends Component<Article.Props, Article.State> {
         return (
             <article >
                 <div onClick={this.toggle}>
-                    <h2>{articles.name}</h2>
+                    <h3>{articles.name}</h3>
                     <div>
                         <img src={`${articles.img}`} className="min_image" alt="img"/>
                         <p>{articles.description}</p>
