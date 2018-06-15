@@ -1,0 +1,36 @@
+nav.bg-light {
+  background-color: rgb(202, 207, 214)!important;
+}
+
+.parts{
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: 0 auto;
+}
+
+
+.article-list__li{
+  width: 31.3%;
+  border: 2px solid rgb(221, 221, 221);
+  border-radius: 20px;
+  margin: 1%;
+}
+
+.article-list__li article{
+  text-align: center;
+}
+
+.min_image{
+  margin: 0 auto;
+  display: block;
+  max-width: 300px;
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+.full_image{
+  margin: 0 auto;
+  display: block;
+  max-width: 400px;
+}
