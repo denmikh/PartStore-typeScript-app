@@ -39,13 +39,13 @@ export class Article extends Component<Article.Props, Article.State> {
                     </div>
                 </div>
                 <Modal isOpen={this.state.modal} toggle={this.toggle}>
-                    <ModalHeader toggle={this.toggle}><h2>{articles.name}</h2></ModalHeader>
+                    <ModalHeader toggle={this.toggle}><h3>{articles.name}</h3></ModalHeader>
                     <ModalBody>
                         <img src={`${articles.img}`} className="min_image" alt="img"/>
-                        <h3>Артикул: {articles.orig_article}</h3>
+                        <h4>Артикул: {articles.orig_article}</h4>
                         <p>Описание: {articles.full_description}</p>
                         <p>Применяемость: {articles.applicability}</p>
-                        <h3>Цена: {articles.price}</h3>
+                        <h4>Цена: {articles.price}</h4>
                     </ModalBody>
                     <ModalFooter>
                         <Button color="primary" onClick={this.toggle}>BUY</Button>{' '}
