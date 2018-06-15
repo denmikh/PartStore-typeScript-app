@@ -1,7 +1,7 @@
 import * as React from 'react'
 import {Header, ArcticleList} from './components'
 import articles from './fixtures'
-import './App.css';
+import './css/App.css';
 
 
 namespace App {
