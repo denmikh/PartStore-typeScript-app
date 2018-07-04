@@ -23,7 +23,7 @@ export class App extends React.Component<App.Props, App.State> {
       <div className="App">
         <Header />
         <div className="wrapper">
-          <ArcticleList  articles= {articles} />
+          <ArcticleList/>
         </div>
       </div>
     );

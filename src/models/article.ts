@@ -1,9 +1,9 @@
 export interface Article {
     id: string,
     name: string,
-    orig_article: string,
+    origArticle: string,
     description: string,
-    full_description?: string,
+    fullDescription?: string,
     applicability: string,
     price: string,
     img: string

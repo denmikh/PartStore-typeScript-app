@@ -32,7 +32,7 @@ export class Article extends Component<Article.Props, Article.State> {
                 <div onClick={this.toggle}>
                     <h3>{articles.name}</h3>
                     <div>
-                        <img src={`${articles.img}`} className="min_image" alt="img"/>
+                        <img src={`${articles.image}`} className="min_image" alt="img"/>
                         <p>{articles.description}</p>
                         <p>{articles.applicability}</p>
                         <h3>{articles.price}</h3>
@@ -41,9 +41,9 @@ export class Article extends Component<Article.Props, Article.State> {
                 <Modal isOpen={this.state.modal} toggle={this.toggle}>
                     <ModalHeader toggle={this.toggle}><h3>{articles.name}</h3></ModalHeader>
                     <ModalBody>
-                        <img src={`${articles.img}`} className="min_image" alt="img"/>
-                        <h4>Артикул: {articles.orig_article}</h4>
-                        <p>Описание: {articles.full_description}</p>
+                        <img src={`${articles.image}`} className="min_image" alt="img"/>
+                        <h4>Артикул: {articles.origArticle}</h4>
+                        <p>Описание: {articles.fullDescription}</p>
                         <p>Применяемость: {articles.applicability}</p>
                         <h4>Цена: {articles.price}</h4>
                     </ModalBody>
