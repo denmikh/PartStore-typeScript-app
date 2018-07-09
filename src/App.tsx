@@ -1,7 +1,10 @@
 import * as React from 'react'
 import {Header, ArcticleList} from './components'
-import articles from './fixtures'
 import './css/App.css';
+import { Provider } from 'mobx-react'
+import { createStores } from './stores'
+import { createAction } from 'mobx/lib/internal';
+import { createSecureContext } from 'tls';
 
 
 namespace App {
@@ -19,11 +22,14 @@ export class App extends React.Component<App.Props, App.State> {
     super(props);
   }
   render() {
+    const rootStore = createStores()
     return (
       <div className="App">
         <Header />
         <div className="wrapper">
-          <ArcticleList/>
+          <Provider {...rootStore}>
+            <ArcticleList/>
+          </Provider>
         </div>
       </div>
     );

@@ -2,10 +2,18 @@ import * as React from 'react';
 import { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
+import { observable } from "mobx"
+import { inject, observer } from 'mobx-react'
+import {MODAL_STORE} from '../const'
+import {ModalStore} from '../stores'
+
+
+
 
 export namespace Article{
   export interface Props{
-    articles: any
+    articles: any,
+    [MODAL_STORE]?: ModalStore
   }
 
   export interface State {
@@ -13,6 +21,8 @@ export namespace Article{
   }
 }
 
+@inject(MODAL_STORE)
+@observer
 export class Article extends Component<Article.Props, Article.State> {
     constructor(props) {
         super(props);
@@ -22,7 +32,7 @@ export class Article extends Component<Article.Props, Article.State> {
     }
 
     toggle = () => {
-        this.setState({ modal: !this.state.modal });
+        this.props.MODAL_STORE.show()
     };
 
     render() {
@@ -38,7 +48,7 @@ export class Article extends Component<Article.Props, Article.State> {
                         <h3>{articles.price}</h3>
                     </div>
                 </div>
-                <Modal isOpen={this.state.modal} toggle={this.toggle}>
+                <Modal isOpen={this.props.MODAL_STORE.isShown} toggle={this.toggle}>
                     <ModalHeader toggle={this.toggle}><h3>{articles.name}</h3></ModalHeader>
                     <ModalBody>
                         <img src={`${articles.image}`} className="min_image" alt="img"/>
@@ -49,7 +59,7 @@ export class Article extends Component<Article.Props, Article.State> {
                     </ModalBody>
                     <ModalFooter>
                         <Button color="primary" onClick={this.toggle}>BUY</Button>{' '}
-                        <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                        <Button color="secondary" onClick={this.props.MODAL_STORE.hide}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
             </article>
