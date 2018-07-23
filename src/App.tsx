@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {Header, ArcticleList} from './components'
+import {Header, PartList} from './components'
 import './css/App.css';
 import { Provider } from 'mobx-react'
 import { createStores } from './stores'
@@ -28,7 +28,7 @@ export class App extends React.Component<App.Props, App.State> {
         <Header />
         <div className="wrapper">
           <Provider {...rootStore}>
-            <ArcticleList/>
+            <PartList/>
           </Provider>
         </div>
       </div>

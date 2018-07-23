@@ -10,14 +10,14 @@ nav.bg-light {
 }
 
 
-.article-list__li{
+.part-list__li{
   width: 31.3%;
   border: 2px solid rgb(221, 221, 221);
   border-radius: 20px;
   margin: 1%;
 }
 
-.article-list__li article{
+.part-list__li article{
   text-align: center;
 }
 

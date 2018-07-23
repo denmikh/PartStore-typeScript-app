@@ -1,8 +1,7 @@
-import {ModalStore} from '.'
+import {PartDetailsModalStore} from '.'
 import {MODAL_STORE} from '../const'
 
-
-const modalStore = new ModalStore()
+const modalStore = new PartDetailsModalStore()
 
 export function createStores() {
  
