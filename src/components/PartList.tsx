@@ -12,7 +12,6 @@ import {PartDetailsModalStore} from '../stores'
 export namespace PartList{
   export interface Props{
     [MODAL_STORE]?: PartDetailsModalStore
-    
   }
 
   export interface State {
