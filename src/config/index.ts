@@ -3,7 +3,7 @@ import { ConfigList } from './IConfiguration'
 
 export const config: ConfigList = {
     dev: {
-        portal: 'http://localhost:1337'
+        portal: 'http://54.159.156.31:1337'
     },
     prod: {
         portal: ''
