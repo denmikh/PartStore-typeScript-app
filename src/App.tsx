@@ -1,4 +1,5 @@
 import * as React from 'react'
+import * as ReactDOM from 'react-dom';
 import {Header, PartList} from './components'
 import './css/App.css';
 import { Provider } from 'mobx-react'
@@ -32,7 +33,9 @@ export class App extends React.Component<App.Props, App.State> {
           </Provider>
         </div>
       </div>
+      
     );
   }
 }
+document.getElementById('root') as HTMLElement
 
