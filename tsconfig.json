@@ -18,7 +18,10 @@
      "es7",
      "dom",
      "esnext.asynciterable"
-   ]
+   ],
+   "types": [
+    "node"
+    ]
  },
  "exclude": [
    "dist",
