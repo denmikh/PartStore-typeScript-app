@@ -1,7 +1,7 @@
 {
-  "name": "typescript-part-store-app",
+  "name": "partstore-typescript-app",
   "version": "0.1.0",
-  "private": false,
+  "private": true,
   "dependencies": {
     "bootstrap": "^4.1.1",
     "mobx": "^5.0.3",
@@ -42,7 +42,6 @@
     "uglify-js": "3.1.10",
     "url-loader": "0.6.2",
     "webpack": "3.11.0",
-    "webpack-dev-server": "2.9.4",
-    "json-loader": "^0.5.4"
+    "webpack-dev-server": "2.9.4"
   }
 }

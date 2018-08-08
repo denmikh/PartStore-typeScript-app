@@ -96,6 +96,8 @@ module.exports = (env, argv) => {
       fs: 'empty',
       net: 'empty',
       tls: 'empty',    
+      child_process: 'empty',
+      readline: 'empty'
     }
   };
 }
