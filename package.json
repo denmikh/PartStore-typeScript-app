@@ -1,6 +1,6 @@
 {
   "name": "partstore-typescript-app",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "bootstrap": "^4.1.1",
@@ -15,7 +15,7 @@
   },
   "scripts": {
     "start": "webpack-dev-server --devtool cheap-module-source-map --output-pathinfo --history-api-fallback --inline --progress --colors --port 3000 --open",
-    "build": "webpack --colors",
+    "build": "webpack --config webpack.config.js --watch",
     "build:production": "webpack -p"
   },
   "devDependencies": {
