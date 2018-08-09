@@ -76,7 +76,7 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin(
         {
           inject: true,
-          template: '../build/index.html'
+          template: './index.html'
         }
       )
     ],
