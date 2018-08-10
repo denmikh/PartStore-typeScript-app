@@ -22,7 +22,7 @@
   },
   "scripts": {
     "start": "webpack-dev-server --devtool cheap-module-source-map --output-pathinfo --history-api-fallback --inline --progress --colors --port 3000 --open",
-    "build": "tsc",
+    "build": "webpack --colors",
     "build:production": "webpack -p"
   },
   "devDependencies": {
