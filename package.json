@@ -14,7 +14,7 @@
     "request-promise": "^4.2.2"
   },
   "scripts": {
-    "start": "webpack-dev-server --devtool cheap-module-source-map --output-pathinfo --history-api-fallback --inline --progress --colors --port 3000 --open",
+    "start": "webpack-dev-server --devtool cheap-module-source-map --output-pathinfo --history-api-fallback --inline --progress --colors --port 80 --open",
     "build": "webpack --colors",
     "build:production": "webpack -p"
   },
