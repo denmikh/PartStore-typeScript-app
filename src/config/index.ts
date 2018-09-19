@@ -3,7 +3,7 @@ import { ConfigList } from './IConfiguration'
 
 export const config: ConfigList = {
     dev: {
-        portal: 'https://partstore-nodeapi.herokuapp.com'
+        portal: 'http://localhost:1337'
     },
     prod: {
         portal: ''
