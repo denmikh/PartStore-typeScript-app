@@ -2,6 +2,23 @@ nav.bg-light {
   background-color: rgb(202, 207, 214)!important;
 }
 
+.menu.ml-auto {
+  margin-left: 5%!important;
+}
+
+.btn-authorization{
+  margin-left: auto;
+}
+
+.btn-authorization .btn {
+  width: 100px;
+  text-align: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  display: inline-block;
+  margin-top: 0px!important;
+}
+
 .parts{
   display: flex;
   flex-wrap: wrap;

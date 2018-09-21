@@ -39,12 +39,13 @@ export class Register extends Component<Register.Props, Register.State> {
         .then((result) => {
             this.setState({ message: '' });
             this.props.history.push("/login")
+            this.setState({ message: 'User "'+username+'" successfully register ' });
         })
-        .catch((response) => {
-            if(response.status === 200){
-                this.setState({ message: 'User register' });
-            }
-        });
+      //   .catch((error) => {
+      //     if(error.response.status === 401) {
+      //         this.setState({ message: 'Login failed. Username or password not match' });
+      //     }
+      // });
     }
 
   render() {

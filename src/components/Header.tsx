@@ -1,17 +1,43 @@
 import * as React from 'react';
 import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+
+// import { LoginModalBody } from './LoginModalBody';
+import {Login} from './Login'
+import {Register} from './Register'
+import { BrowserRouter, Route, Router } from 'react-router-dom'
+
+
 
 export namespace Header {
   export interface Props {
-    //empty
+      //empty
   }
   export interface State {
-    //empty
+    modal_1: boolean;
+    modal_2: boolean;
   }
 }
 export class Header extends React.Component<Header.Props, Header.State > {
     constructor(props) {
-      super(props);
+        super(props);
+        this.state = {
+            modal_1: false,
+            modal_2: false
+        }
+        this.toggle_1 = this.toggle_1.bind(this);
+        this.toggle_2 = this.toggle_2.bind(this);
+    }
+
+    toggle_1() {
+        this.setState({
+          modal_1: !this.state.modal_1
+        });
+    }
+    toggle_2() {
+        this.setState({
+          modal_2: !this.state.modal_2
+        });
     }
   
     render () {
@@ -19,7 +45,7 @@ export class Header extends React.Component<Header.Props, Header.State > {
         <header>
             <Navbar color="light" light expand="md">
                 <NavbarBrand href="/">AutoParts61</NavbarBrand>
-                <Nav className="ml-auto" navbar>
+                <Nav className="menu ml-auto " navbar>
                     <NavItem>
                         <NavLink href="/components/">Главная</NavLink>
                     </NavItem>
@@ -33,7 +59,41 @@ export class Header extends React.Component<Header.Props, Header.State > {
                         <NavLink href="/components/">Обратная связь</NavLink>
                     </NavItem>
                 </Nav>
+                <div className="btn-authorization">
+                    <Button color="danger" className="btn" onClick={this.toggle_1}>Login</Button>
+                    <Button color="danger" className="btn" onClick={this.toggle_2}>Register</Button>
+                </div>
             </Navbar>
+
+            <Modal isOpen={this.state.modal_1} toggle={this.toggle_1} className="LoginModalBody">
+                <ModalHeader toggle={this.toggle_1}>Autorization</ModalHeader>
+                <ModalBody>
+                    <BrowserRouter>
+                        <div>
+                            <Route path="/" component={Login} />
+                        </div>
+                    </BrowserRouter>
+                </ModalBody>
+                <ModalFooter>
+                    <Button color="secondary" onClick={this.toggle_1}>Cancel</Button>
+                </ModalFooter>
+            </Modal>
+
+            <Modal isOpen={this.state.modal_2} toggle={this.toggle_2} className="RegisterModalBody">
+                <ModalHeader toggle={this.toggle_2}>Registtation</ModalHeader>
+                <ModalBody>
+                    <BrowserRouter>
+                        <div>
+                            <Route path="/" component={Register} />
+                        </div>
+                    </BrowserRouter>
+                </ModalBody>
+                <ModalFooter>
+                    <Button color="secondary" onClick={this.toggle_2}>Cancel</Button>
+                </ModalFooter>
+            </Modal>
+          
+
         </header>
       );
     }

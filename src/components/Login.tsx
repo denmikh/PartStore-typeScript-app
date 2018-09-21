@@ -39,17 +39,18 @@ export class Login extends Component<Login.Props, Login.State> {
     const { username, password } = this.state;
 
     axios.post('http://localhost:1337/api/signin', { username, password })
-      .then((result) => {
-        localStorage.setItem('jwtToken', result.data.token);
-        this.setState({ message: '' });
-        this.props.history.push('/')
-      })
-      .catch((error) => {
-        if(error.response.status === 401) {
-          this.setState({ message: 'Login failed. Username or password not match' });
-        }
+        .then((result) => {
+            localStorage.setItem('jwtToken', result.data.token);
+            // this.setState({ message: '' });
+            this.props.history.push('/')
+            this.setState({ message: 'Login ok' });
+        })
+        .catch((error) => {
+          if(error.response.status === 401) {
+              this.setState({ message: 'Login failed. Username or password not match' });
+          }
       });
-  }
+    }
 
   render() {
     const { username, password, message } = this.state;

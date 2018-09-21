@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {Header, PartList, Login, Register} from './components'
+import {Header, PartList} from './components'
 import './css/App.css';
 import { Provider } from 'mobx-react'
 import { createStores } from './stores'
@@ -24,18 +24,14 @@ export class App extends React.Component<App.Props, App.State> {
     const rootStore = createStores()
     return (
       <div className="App">
-        <Header/>
+          <BrowserRouter>
+            <div>
+              <Route path="/" component={Header} />
+            </div>
+          </BrowserRouter>
+        {/* <Header/> */}
         <div className="wrapper">
-          <BrowserRouter>
-            <div>
-              <Route path="/" component={Login} />
-            </div>
-          </BrowserRouter>
-          <BrowserRouter>
-            <div>
-              <Route path="/" component={Register} />
-            </div>
-          </BrowserRouter>
+
           <Provider {...rootStore}>
             <PartList/>
           </Provider>
