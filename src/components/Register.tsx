@@ -38,14 +38,14 @@ export class Register extends Component<Register.Props, Register.State> {
     axios.post('http://localhost:1337/api/signup', { username, password })
         .then((result) => {
             this.setState({ message: '' });
-            this.props.history.push("/login")
+            this.props.history.push("/")
             this.setState({ message: 'User "'+username+'" successfully register ' });
         })
-      //   .catch((error) => {
-      //     if(error.response.status === 401) {
-      //         this.setState({ message: 'Login failed. Username or password not match' });
-      //     }
-      // });
+        .catch((error) => {
+          if(error.response.status === 401) {
+              this.setState({ message: 'Login failed. Username or password not match' });
+          }
+      });
     }
 
   render() {
