@@ -6,8 +6,8 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import {Login} from './Login'
 import {Register} from './Register'
 import {AddPart} from './AddPart'
-import { BrowserRouter, Route, Router } from 'react-router-dom'
 
+import {BrowserRouter, Route, Link} from 'react-router-dom'
 
 
 export namespace Header {
@@ -15,38 +15,30 @@ export namespace Header {
       //empty
   }
   export interface State {
-    modal_1: boolean;
-    modal_2: boolean;
-    modal_3: boolean;
+    modal_login: boolean;
+    modal_addPart: boolean;
   }
 }
 export class Header extends React.Component<Header.Props, Header.State > {
     constructor(props) {
         super(props);
         this.state = {
-            modal_1: false,
-            modal_2: false,
-            modal_3: false,
+            modal_login: false,
+            modal_addPart: false,
 
         }
-        this.toggle_1 = this.toggle_1.bind(this);
-        this.toggle_2 = this.toggle_2.bind(this);
-        this.toggle_3 = this.toggle_3.bind(this);
+        this.login = this.login.bind(this);
+        this.addPart = this.addPart.bind(this);
     }
 
-    toggle_1() {
+    login() {
         this.setState({
-          modal_1: !this.state.modal_1
+          modal_login: !this.state.modal_login
         });
     }
-    toggle_2() {
+    addPart() {
         this.setState({
-          modal_2: !this.state.modal_2
-        });
-    }
-    toggle_3() {
-        this.setState({
-          modal_3: !this.state.modal_3
+          modal_addPart: !this.state.modal_addPart
         });
     }
   
@@ -62,7 +54,7 @@ export class Header extends React.Component<Header.Props, Header.State > {
                 <NavbarBrand href="/">AutoParts61</NavbarBrand>
                 <Nav className="menu ml-auto " navbar>
                     <NavItem>
-                        <NavLink href="/components/">Главная</NavLink>
+                        <NavLink><Link to="/">Главная</Link></NavLink>
                     </NavItem>
                     <NavItem>
                         <NavLink href="/components/">Каталог</NavLink>
@@ -75,47 +67,32 @@ export class Header extends React.Component<Header.Props, Header.State > {
                     </NavItem>
                 </Nav>
                 <div className="btn-authorization">
-                    <Button color="danger" className="btn" onClick={this.toggle_1}>Login</Button>
-                    <Button color="danger" className="btn" onClick={this.toggle_2}>Register</Button>
+                    <Button color="danger" className="btn login" onClick={this.login}>Login</Button>
+                    <Link to='/reg'><Button color="danger" className="btn reg">Register</Button></Link>
                     {localStorage.getItem('jwtToken') &&
                         <Button color="danger" className="btn" onClick={this.logout}>Logout</Button>
                     }
                     {localStorage.getItem('jwtToken') &&
-                        <Button color="danger" className="btn" onClick={this.toggle_3}>Add Part</Button>
+                        <Button color="danger" className="btn" onClick={this.addPart}>Add Part</Button>
                     }
                 </div>
             </Navbar>
 
-            <Modal isOpen={this.state.modal_1} toggle={this.toggle_1} className="LoginModalBody">
-                <ModalHeader toggle={this.toggle_1}>Autorization</ModalHeader>
+            <Modal isOpen={this.state.modal_login} toggle={this.login} className="LoginModalBody">
+                <ModalHeader toggle={this.login}>Autorization</ModalHeader>
                 <ModalBody>
-                    <BrowserRouter>
-                        <div>
-                            <Route path="/" component={Login} />
-                        </div>
-                    </BrowserRouter>
+                    <Login/>
+                    <p>
+                         Not a member? <Link to='/reg' onClick={this.login}><span className="glyphicon glyphicon-plus-sign" aria-hidden="true" ></span> Register here</Link>
+                    </p>
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="secondary" onClick={this.toggle_1}>Cancel</Button>
+                    <Button color="secondary" onClick={this.login}>Cancel</Button>
                 </ModalFooter>
             </Modal>
 
-            <Modal isOpen={this.state.modal_2} toggle={this.toggle_2} className="RegisterModalBody">
-                <ModalHeader toggle={this.toggle_2}>Registration</ModalHeader>
-                <ModalBody>
-                    <BrowserRouter>
-                        <div>
-                            <Route path="/" component={Register} />
-                        </div>
-                    </BrowserRouter>
-                </ModalBody>
-                <ModalFooter>
-                    <Button color="secondary" onClick={this.toggle_2}>Cancel</Button>
-                </ModalFooter>
-            </Modal>
-
-            <Modal isOpen={this.state.modal_3} toggle={this.toggle_3} className="Add part">
-                <ModalHeader toggle={this.toggle_3}>AddPart</ModalHeader>
+            <Modal isOpen={this.state.modal_addPart} toggle={this.addPart} className="Add part">
+                <ModalHeader toggle={this.addPart}>AddPart</ModalHeader>
                 <ModalBody>
                     <BrowserRouter>
                         <div>
@@ -124,7 +101,7 @@ export class Header extends React.Component<Header.Props, Header.State > {
                     </BrowserRouter>
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="secondary" onClick={this.toggle_3}>Cancel</Button>
+                    <Button color="secondary" onClick={this.addPart}>Cancel</Button>
                 </ModalFooter>
             </Modal>
           

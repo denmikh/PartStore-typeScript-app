@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import '../css/Login.css';
 
+
 export namespace Register{
     export interface Props{
       history?: any;
@@ -51,18 +52,20 @@ export class Register extends Component<Register.Props, Register.State> {
   render() {
     const { username, password, message } = this.state;
     return (
-      <div className="container">
-        <form className="form-signin" onSubmit={this.onSubmit}>
-            {message !== '' &&
-                <div className="alert alert-warning alert-dismissible" role="alert">
-                    { message }
-                </div>
-            }
-          <h2 className="form-signin-heading">Register</h2>
-          <input type="email" className="form-control" placeholder="Email address" name="username" value={username} onChange={this.onChange} required/>
-          <input type="password" className="form-control" placeholder="Password" name="password" value={password} onChange={this.onChange} required/>
-          <button className="btn btn-lg btn-primary btn-block" type="submit">Register</button>
-        </form>
+      <div className="register">
+        <div className="container">
+          <form className="form-signin" onSubmit={this.onSubmit}>
+              {message !== '' &&
+                  <div className="alert alert-warning alert-dismissible" role="alert">
+                      { message }
+                  </div>
+              }
+            <h2 className="form-signin-heading">Register</h2>
+            <input type="email" className="form-control" placeholder="Email address" name="username" value={username} onChange={this.onChange} required/>
+            <input type="password" className="form-control" placeholder="Password" name="password" value={password} onChange={this.onChange} required/>
+            <button className="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+          </form>
+        </div>
       </div>
     );
   }

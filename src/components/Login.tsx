@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import '../css/Login.css';
 
+import {Header} from './Header';
 
 export namespace Login{
   export interface Props{
@@ -25,7 +26,7 @@ export class Login extends Component<Login.Props, Login.State> {
       message: ''
     }
   }
-
+  
   onChange = (e) => {
     const state = this.state
     state[e.target.name] = e.target.value;
@@ -65,14 +66,8 @@ export class Login extends Component<Login.Props, Login.State> {
           <h2 className="form-signin-heading">Please sign in</h2>
           <input type="email" className="form-control" placeholder="Email address" name="username" value={username} onChange={this.onChange} required/>
           <input type="password" className="form-control" placeholder="Password" name="password" value={password} onChange={this.onChange} required/>
-          
-    
+
           <button className="btn btn-lg btn-primary btn-block" type="submit">Login</button>
- 
-          
-          <p>
-            Not a member? <Link to="/register"><span className="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Register here</Link>
-          </p>
         </form>
       </div>
     );
