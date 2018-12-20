@@ -1,42 +1,40 @@
 import * as React from 'react';
-import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import { Navbar, Nav, NavItem} from 'reactstrap';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-
-// import { LoginModalBody } from './LoginModalBody';
-import {Login} from './Login'
-import {Register} from './Register'
-import {AddPart} from './AddPart'
-
 import {BrowserRouter, Route, Link} from 'react-router-dom'
+
+import {Login} from './Login'
+import {AddPart} from './AddPart'
+import '../css/Header.css';
 
 
 export namespace Header {
-  export interface Props {
-      //empty
-  }
-  export interface State {
-    modal_login: boolean;
-    modal_addPart: boolean;
-  }
+    export interface Props {
+        //empty
+    }
+
+    export interface State {
+        modal_login: boolean;
+        modal_addPart: boolean;
+    }
 }
+
+// перевести компонент на mobx
 export class Header extends React.Component<Header.Props, Header.State > {
     constructor(props) {
         super(props);
         this.state = {
             modal_login: false,
             modal_addPart: false,
-
         }
-        this.login = this.login.bind(this);
-        this.addPart = this.addPart.bind(this);
     }
 
-    login() {
+    login = () => {
         this.setState({
           modal_login: !this.state.modal_login
         });
     }
-    addPart() {
+    addPart = () => {
         this.setState({
           modal_addPart: !this.state.modal_addPart
         });
@@ -44,36 +42,41 @@ export class Header extends React.Component<Header.Props, Header.State > {
   
     logout = () => {
         localStorage.removeItem('jwtToken');
-        window.location.reload();
+        window.location.href= '/';
     }
 
     render () {
       return (
         <header>
             <Navbar color="light" light expand="md">
-                <NavbarBrand href="/">AutoParts61</NavbarBrand>
+                <Link to="/" className="brand-link">AutoParts61</Link>
                 <Nav className="menu ml-auto " navbar>
                     <NavItem>
-                        <NavLink><Link to="/">Главная</Link></NavLink>
+                        <Link className="nav-link" to="/">Главная</Link>
                     </NavItem>
                     <NavItem>
-                        <NavLink href="/components/">Каталог</NavLink>
+                        <Link className="nav-link" to="/catalog">Каталог</Link>
                     </NavItem>
                     <NavItem>
-                        <NavLink href="/components/">О нас</NavLink>
+                        <Link className="nav-link" to="/about">О нас</Link>
                     </NavItem>
                     <NavItem>
-                        <NavLink href="/components/">Обратная связь</NavLink>
+                        <Link className="nav-link" to="/">Обратная связь</Link>
                     </NavItem>
                 </Nav>
+                
                 <div className="btn-authorization">
-                    <Button color="danger" className="btn login" onClick={this.login}>Login</Button>
+                    {!localStorage.getItem('jwtToken') &&
+                        <Button color="danger" className="btn login" onClick={this.login}>Login</Button>
+                    }
+                    {!localStorage.getItem('jwtToken') &&
                     <Link to='/reg'><Button color="danger" className="btn reg">Register</Button></Link>
-                    {localStorage.getItem('jwtToken') &&
-                        <Button color="danger" className="btn" onClick={this.logout}>Logout</Button>
                     }
                     {localStorage.getItem('jwtToken') &&
                         <Button color="danger" className="btn" onClick={this.addPart}>Add Part</Button>
+                    }
+                    {localStorage.getItem('jwtToken') &&
+                        <Button color="danger" className="btn" onClick={this.logout}>Logout</Button>
                     }
                 </div>
             </Navbar>
@@ -81,9 +84,13 @@ export class Header extends React.Component<Header.Props, Header.State > {
             <Modal isOpen={this.state.modal_login} toggle={this.login} className="LoginModalBody">
                 <ModalHeader toggle={this.login}>Autorization</ModalHeader>
                 <ModalBody>
-                    <Login/>
-                    <p>
-                         Not a member? <Link to='/reg' onClick={this.login}><span className="glyphicon glyphicon-plus-sign" aria-hidden="true" ></span> Register here</Link>
+                    <BrowserRouter>
+                        <div>
+                            <Route path="/" component={Login} />
+                        </div>
+                    </BrowserRouter>
+                    <p className="reg-link">
+                         Not a member? <Link to='/reg' onClick={this.login}>Register here</Link>
                     </p>
                 </ModalBody>
                 <ModalFooter>

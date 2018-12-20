@@ -6,28 +6,17 @@ import { inject, observer } from 'mobx-react'
 import {MODAL_STORE} from '../const'
 
 
-
-
 export namespace PartModalBody{
     export interface Props{
         [MODAL_STORE]?: PartDetailsModalStore
         
     }
-    export interface State {
-            //empty
-    }
 }
 
 @inject(MODAL_STORE)
 @observer
-export class PartModalBody extends  Component<PartModalBody.Props, PartModalBody.State> {
-    constructor(props) {
-        super(props);
-        this.state = {
-        }
-    }
+export class PartModalBody extends  Component<PartModalBody.Props> {
 
-     
     toggle = () => {
         this.props.MODAL_STORE.hide()
     };

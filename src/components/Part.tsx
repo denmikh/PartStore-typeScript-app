@@ -7,19 +7,9 @@ export namespace Part{
   export interface Props{
     part: PartModel,
   }
-
-  export interface State {
-    //empty
-  }
 }
 
-export class Part extends Component<Part.Props, Part.State> {
-    constructor(props) {
-        super(props);
-        this.state = {
-        }
-    }
-
+export class Part extends Component<Part.Props> {
     render() {
         const {part} = this.props
         return (
@@ -36,4 +26,4 @@ export class Part extends Component<Part.Props, Part.State> {
             </article>
         );
     }
-  }
+}

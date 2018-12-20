@@ -1,10 +1,7 @@
 import * as React from 'react';
 import { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import '../css/Login.css';
-
-import {Header} from './Header';
 
 export namespace Login{
   export interface Props{
@@ -41,8 +38,7 @@ export class Login extends Component<Login.Props, Login.State> {
     axios.post('http://localhost:1337/api/signin', { username, password })
         .then((result) => {
             localStorage.setItem('jwtToken', result.data.token);
-            // this.setState({ message: '' });
-            this.props.history.push('/')
+            // this.props.history.push('/')
             this.setState({ message: 'Login ok' });
             window.location.reload();
         })
