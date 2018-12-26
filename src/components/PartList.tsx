@@ -13,14 +13,11 @@ export namespace PartList{
   export interface Props{
     [MODAL_STORE]?: PartDetailsModalStore
   }
-
-  export interface State {
-  }
 }
 
 @inject(MODAL_STORE)
 @observer
-export class PartList extends Component<PartList.Props, PartList.State> {
+export class PartList extends Component<PartList.Props> {
   
   @observable private parts: PartModel[] = []
   private partService = new PartService()

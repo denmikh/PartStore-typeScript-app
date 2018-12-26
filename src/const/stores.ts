@@ -1,1 +1,2 @@
 export const MODAL_STORE = "MODAL_STORE"
+export const HEADER_STORE = "HEADER_STORE"

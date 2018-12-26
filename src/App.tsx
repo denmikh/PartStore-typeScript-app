@@ -30,7 +30,9 @@ export class App extends React.Component<App.Props, App.State> {
       <div className="App">
         <Router history={history}>
           <div>
-            <Header/>
+            <Provider {...rootStore}>
+              <Header/>
+            </Provider>
             <div className="wrapper">
               <Provider {...rootStore}>
                 <Route path="/" exact component={PartList}/>
