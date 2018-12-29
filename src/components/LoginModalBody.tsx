@@ -12,7 +12,6 @@ import {Login} from './Login'
 export namespace LoginModalBody{
     export interface Props{
         [HEADER_STORE]?: HeaderStore
-        
     }
 }
 
@@ -31,7 +30,7 @@ export class LoginModalBody extends  Component<LoginModalBody.Props> {
             <ModalBody>
                 <BrowserRouter>
                     <div>
-                        <Route path="/" component={Login} />
+                        <Route path="/" component={Login}/>
                     </div>
                 </BrowserRouter>
                 <p className="reg-link">

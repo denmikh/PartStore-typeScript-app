@@ -23,16 +23,12 @@ export class PartList extends Component<PartList.Props> {
   private partService = new PartService()
   
 
-  componentDidMount(){
-    this.partService.getAll()
-    .then(
-      result =>{
-        this.parts = result
-      },
-      error => {
-        console.error(error.message)
-      }
-    )
+  async componentDidMount(){
+    try {
+      this.parts = await this.partService.getAll()
+    } catch(error) {
+      console.error(error.message)
+    }
   }
 
     render () {
